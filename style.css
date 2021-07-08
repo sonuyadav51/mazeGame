@@ -42,9 +42,14 @@ body{
 }
 
   /*for large devices*/
-  @media screen and (min-width: 768px) {
-  .btns{
-      display: none;
+ @media screen and (min-width: 992px) {
+    #up,
+    #down,
+    #left,
+    #right{
+        display: none;
+        
+       
   }
 
-  }
+  } 
