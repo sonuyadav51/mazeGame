@@ -4,7 +4,10 @@ const cellsHorizontal = 14;
 const cellsVertical = 10;
 const width = window.innerWidth;
 const height = window.innerHeight;
-
+let upBtn = document.querySelector('#up');
+let downBtn = document.querySelector('#down');
+let leftBtn = document.querySelector('#left');
+let rightBtn = document.querySelector('#right');
 const unitLengthX = width / cellsHorizontal;
 const unitLengthY = height / cellsVertical;
 
@@ -190,25 +193,39 @@ const ball = Bodies.circle(unitLengthX / 2, unitLengthY / 2, ballRadius, {
   }
 });
 World.add(world, ball);
-
+var { x, y } = ball.velocity;
 document.addEventListener('keydown', event => {
-  const { x, y } = ball.velocity;
+ 
 
   if (event.keyCode === 87) {
-    Body.setVelocity(ball, { x, y: y - 5 });
+    Body.setVelocity(ball, { x, y: y - 2 });
   }
 
   if (event.keyCode === 68) {
-    Body.setVelocity(ball, { x: x + 5, y });
+    Body.setVelocity(ball, { x: x + 2, y });
   }
 
   if (event.keyCode === 83) {
-    Body.setVelocity(ball, { x, y: y + 5 });
+    Body.setVelocity(ball, { x, y: y + 2 });
   }
 
   if (event.keyCode === 65) {
-    Body.setVelocity(ball, { x: x - 5, y });
+    Body.setVelocity(ball, { x: x - 2, y });
   }
+});
+
+rightBtn.addEventListener('click',()=>{
+  Body.setVelocity(ball, { x: x + 2, y });
+  
+});
+leftBtn.addEventListener('click',()=>{
+  Body.setVelocity(ball, { x: x - 2, y });
+});
+upBtn.addEventListener('click',()=>{
+  Body.setVelocity(ball, { x, y: y - 2 });
+});
+downBtn.addEventListener('click',()=>{
+ Body.setVelocity(ball, { x, y: y + 2 });
 });
 
 // Win Condition
